@@ -1,6 +1,6 @@
 import os
 
-with open("ip_list.txt") as file:
+with open("ip_list.txt.txt") as file:
     park = file.read()
     park = park.splitlines()
     print(f" {park}  \n")
@@ -13,17 +13,19 @@ for ip in park:
     if ("Request timed out." or "unreachable") in response:
         print(response)
         f = open("ip_output.txt", "a")
-        f.write(str(ip) + ' link is down' + '\n')
+        # f.write(str(ip) + ' link is down' + '\n')
+        f.write(str(response) + '\n')
         f.close()
     else:
         print(response)
         f = open("ip_output.txt", "a")
-        f.write(str(ip) + ' is up ' + '\n')
+        # f.write(str(ip) + ' is up ' + '\n')
+        f.write(str(response) + '\n')
         f.close()
         # print output file to screen
 with open("ip_output.txt") as file:
     output = file.read()
     f.close()
     print(output)
-with open("ip_output.txt", "w") as file:
+with open("ip_output.txt", "a") as file:
     pass
